@@ -1,0 +1,8 @@
+/GramaticaSQL.tokens
+/GramaticaSQLBaseListener.java
+/GramaticaSQLBaseVisitor.java
+/GramaticaSQLLexer.java
+/GramaticaSQLLexer.tokens
+/GramaticaSQLListener.java
+/GramaticaSQLParser.java
+/GramaticaSQLVisitor.java
