@@ -1,18 +1,23 @@
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
+import java.awt.Scrollbar;
 
 
 @SuppressWarnings("serial")
@@ -57,12 +62,25 @@ public class Jfprincipal extends JFrame
 		
 		
 		JTextArea TAMostrarResultados = new JTextArea();
+		TAMostrarResultados.setLineWrap(true);
 		TAMostrarResultados.setBounds(10, 156, 364, 172);
 		TAMostrarResultados.setBackground(Color.black);
 		TAMostrarResultados.setForeground(Color.white);
+		TAMostrarResultados.setEditable(false);
+		Font font = new Font("OCR A Extended", Font.BOLD, 12);
+		TAMostrarResultados.setFont(font);
 		contentPane.add(TAMostrarResultados);
 		
+		//NO QUIERE FUNCIONAR LO DE LOS SCROLL BAR
+		/*JScrollPane scrollTerminal = new JScrollPane(TAMostrarResultados);
+		scrollTerminal.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+		scrollTerminal.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		contentPane.add(TAMostrarResultados);
+		contentPane.add(scrollTerminal);*/
+		
 		JTextArea TARecibirQuerys = new JTextArea();
+		TARecibirQuerys.setLineWrap(true);
+		TARecibirQuerys.setFont(new Font("Lucida Console", Font.PLAIN, 13));
 		TARecibirQuerys.setBounds(10, 11, 364, 134);
 		contentPane.add(TARecibirQuerys);
 	
@@ -141,5 +159,4 @@ public class Jfprincipal extends JFrame
 		 }
 		 return texto;//El texto se almacena en el JTextArea
 	}
-	
 }

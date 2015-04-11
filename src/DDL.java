@@ -7,7 +7,7 @@ public class DDL
 	
 	public void createDatabase(String nombre)
 	{
-		File directorio = new File("C:/Users/fred__000/git/DBMS1/Pruebas" +nombre);
+		File directorio = new File("C:/Users/Sophia/Documents/DBMS/Bases de Datos/" +nombre);
 		boolean success = directorio.mkdir();
 		if(success)
 			mensaje="Se ha creado la Base de Datos exitosamente";
@@ -17,7 +17,7 @@ public class DDL
 	
 	public void showDatabases()
 	{
-		File folder = new File("C:/Users/fred__000/git/DBMS1/Pruebas");
+		File folder = new File("C:/Users/Sophia/Documents/DBMS/Bases de Datos");
 		File[] listOfDB = folder.listFiles();
 		String titulo="Bases de Datos actuales";
 		String datos="";
@@ -26,7 +26,8 @@ public class DDL
 		{
 			if (listOfDB[i].isDirectory())
 			{
-				datos="\n- " + listOfDB[i].getName();
+				//concatenar datos con datos, sino solo muestra el ultimo elemento de la lista
+				datos= datos +"\n- " + listOfDB[i].getName();
 			}
 		}
 		mensaje=titulo+datos;
@@ -35,7 +36,7 @@ public class DDL
 	
 	public ArrayList<String> getNames()
 	{
-		File folder = new File("C:/Users/fred__000/git/DBMS1/Pruebas");
+		File folder = new File("C:/Users/Sophia/Documents/DBMS/Bases de Datos");
 		File[] listOfFiles = folder.listFiles();
 		ArrayList<String> nameOfFiles = new ArrayList<String>();
 		for(int i = 0; i < listOfFiles.length; i++)
@@ -48,8 +49,8 @@ public class DDL
 	public void alterDatabase(String oldName, String newName)
 	{
 		ArrayList<String> names = getNames();
-		File oldDir = new File("C:/Users/fred__000/git/DBMS1/Pruebas" + oldName);
-		File newDir = new File("C:/Users/fred__000/git/DBMS1/Pruebas" + newName);
+		File oldDir = new File("C:/Users/Sophia/Documents/DBMS/Bases de Datos/" + oldName);
+		File newDir = new File("C:/Users/Sophia/Documents/DBMS/Bases de Datos/" + newName);
 		if(!names.contains(oldName))
 		{
 			mensaje="La Base de Datos que intenta renombrar no existe";
@@ -77,7 +78,7 @@ public class DDL
 		}
 		else 
 		{
-			newDirectory = ("C:/Users/fred__000/git/DBMS1/Pruebas" + nombre + "/");
+			newDirectory = ("C:/Users/Sophia/Documents/DBMS/Bases de Datos/" + nombre + "/");
 		}
 		mensaje=newDirectory;
 		return newDirectory;
@@ -114,7 +115,7 @@ public class DDL
 	
 	public void dropDatabase(String nombre)
 	{
-		File database = new File("C:/Users/fred__000/git/DBMS1/Pruebas" + nombre);
+		File database = new File("C:/Users/Sophia/Documents/DBMS/Bases de Datos/" + nombre);
 		File[] archivos = database.listFiles();
 		for(int i = 0; i < archivos.length; i++)
 		{

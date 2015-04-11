@@ -340,7 +340,8 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>
 	@Override
 	public String visitPrincipal(GramaticaSQLParser.PrincipalContext ctx) 
 	{
-		String tipo =super.visitPrincipal(ctx);
+		//NO ES NECESARIO ASIGNARLO A UN STRING
+		super.visitPrincipal(ctx);
 		// TODO Auto-generated method stub
 		mensaje1=DDL.mensaje;
 		return mensaje1;
