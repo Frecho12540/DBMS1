@@ -150,16 +150,6 @@ public interface GramaticaSQLListener extends ParseTreeListener {
 	 */
 	void exitStatementData(@NotNull GramaticaSQLParser.StatementDataContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramaticaSQLParser#setting}.
-	 * @param ctx the parse tree
-	 */
-	void enterSetting(@NotNull GramaticaSQLParser.SettingContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GramaticaSQLParser#setting}.
-	 * @param ctx the parse tree
-	 */
-	void exitSetting(@NotNull GramaticaSQLParser.SettingContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code actTableAddCnst}
 	 * labeled alternative in {@link GramaticaSQLParser#actionTable}.
 	 * @param ctx the parse tree
@@ -240,18 +230,6 @@ public interface GramaticaSQLListener extends ParseTreeListener {
 	 */
 	void exitStmtDropDB(@NotNull GramaticaSQLParser.StmtDropDBContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code RelMayor}
-	 * labeled alternative in {@link GramaticaSQLParser#opeRelacional}.
-	 * @param ctx the parse tree
-	 */
-	void enterRelMayor(@NotNull GramaticaSQLParser.RelMayorContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code RelMayor}
-	 * labeled alternative in {@link GramaticaSQLParser#opeRelacional}.
-	 * @param ctx the parse tree
-	 */
-	void exitRelMayor(@NotNull GramaticaSQLParser.RelMayorContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link GramaticaSQLParser#useDatabase}.
 	 * @param ctx the parse tree
 	 */
@@ -319,6 +297,18 @@ public interface GramaticaSQLListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitStmtShowColsFrom(@NotNull GramaticaSQLParser.StmtShowColsFromContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code atomID}
+	 * labeled alternative in {@link GramaticaSQLParser#atom}.
+	 * @param ctx the parse tree
+	 */
+	void enterAtomID(@NotNull GramaticaSQLParser.AtomIDContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code atomID}
+	 * labeled alternative in {@link GramaticaSQLParser#atom}.
+	 * @param ctx the parse tree
+	 */
+	void exitAtomID(@NotNull GramaticaSQLParser.AtomIDContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GramaticaSQLParser#createDatabase}.
 	 * @param ctx the parse tree
@@ -390,18 +380,6 @@ public interface GramaticaSQLListener extends ParseTreeListener {
 	 */
 	void exitStmtAlterTable(@NotNull GramaticaSQLParser.StmtAlterTableContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code RelMayorIgual}
-	 * labeled alternative in {@link GramaticaSQLParser#opeRelacional}.
-	 * @param ctx the parse tree
-	 */
-	void enterRelMayorIgual(@NotNull GramaticaSQLParser.RelMayorIgualContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code RelMayorIgual}
-	 * labeled alternative in {@link GramaticaSQLParser#opeRelacional}.
-	 * @param ctx the parse tree
-	 */
-	void exitRelMayorIgual(@NotNull GramaticaSQLParser.RelMayorIgualContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code cKeyCHK}
 	 * labeled alternative in {@link GramaticaSQLParser#cKey}.
 	 * @param ctx the parse tree
@@ -423,16 +401,6 @@ public interface GramaticaSQLListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitCreateTable(@NotNull GramaticaSQLParser.CreateTableContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link GramaticaSQLParser#relacional}.
-	 * @param ctx the parse tree
-	 */
-	void enterRelacional(@NotNull GramaticaSQLParser.RelacionalContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GramaticaSQLParser#relacional}.
-	 * @param ctx the parse tree
-	 */
-	void exitRelacional(@NotNull GramaticaSQLParser.RelacionalContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GramaticaSQLParser#insert}.
 	 * @param ctx the parse tree
@@ -486,18 +454,6 @@ public interface GramaticaSQLListener extends ParseTreeListener {
 	 */
 	void exitPrincipal(@NotNull GramaticaSQLParser.PrincipalContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code RelMenorIgual}
-	 * labeled alternative in {@link GramaticaSQLParser#opeRelacional}.
-	 * @param ctx the parse tree
-	 */
-	void enterRelMenorIgual(@NotNull GramaticaSQLParser.RelMenorIgualContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code RelMenorIgual}
-	 * labeled alternative in {@link GramaticaSQLParser#opeRelacional}.
-	 * @param ctx the parse tree
-	 */
-	void exitRelMenorIgual(@NotNull GramaticaSQLParser.RelMenorIgualContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link GramaticaSQLParser#showColumnsFrom}.
 	 * @param ctx the parse tree
 	 */
@@ -507,16 +463,6 @@ public interface GramaticaSQLListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitShowColumnsFrom(@NotNull GramaticaSQLParser.ShowColumnsFromContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link GramaticaSQLParser#insertConstraint}.
-	 * @param ctx the parse tree
-	 */
-	void enterInsertConstraint(@NotNull GramaticaSQLParser.InsertConstraintContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GramaticaSQLParser#insertConstraint}.
-	 * @param ctx the parse tree
-	 */
-	void exitInsertConstraint(@NotNull GramaticaSQLParser.InsertConstraintContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code stmtActionTable}
 	 * labeled alternative in {@link GramaticaSQLParser#statementTable}.
@@ -626,18 +572,6 @@ public interface GramaticaSQLListener extends ParseTreeListener {
 	 */
 	void exitBooleanExpression(@NotNull GramaticaSQLParser.BooleanExpressionContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code RelMenor}
-	 * labeled alternative in {@link GramaticaSQLParser#opeRelacional}.
-	 * @param ctx the parse tree
-	 */
-	void enterRelMenor(@NotNull GramaticaSQLParser.RelMenorContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code RelMenor}
-	 * labeled alternative in {@link GramaticaSQLParser#opeRelacional}.
-	 * @param ctx the parse tree
-	 */
-	void exitRelMenor(@NotNull GramaticaSQLParser.RelMenorContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link GramaticaSQLParser#condicion}.
 	 * @param ctx the parse tree
 	 */
@@ -660,17 +594,17 @@ public interface GramaticaSQLListener extends ParseTreeListener {
 	 */
 	void exitStmtPrincipalData(@NotNull GramaticaSQLParser.StmtPrincipalDataContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code RelDiferentes}
-	 * labeled alternative in {@link GramaticaSQLParser#opeRelacional}.
+	 * Enter a parse tree produced by the {@code atomExp}
+	 * labeled alternative in {@link GramaticaSQLParser#atom}.
 	 * @param ctx the parse tree
 	 */
-	void enterRelDiferentes(@NotNull GramaticaSQLParser.RelDiferentesContext ctx);
+	void enterAtomExp(@NotNull GramaticaSQLParser.AtomExpContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code RelDiferentes}
-	 * labeled alternative in {@link GramaticaSQLParser#opeRelacional}.
+	 * Exit a parse tree produced by the {@code atomExp}
+	 * labeled alternative in {@link GramaticaSQLParser#atom}.
 	 * @param ctx the parse tree
 	 */
-	void exitRelDiferentes(@NotNull GramaticaSQLParser.RelDiferentesContext ctx);
+	void exitAtomExp(@NotNull GramaticaSQLParser.AtomExpContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code stmtCreateDB}
 	 * labeled alternative in {@link GramaticaSQLParser#statementDatabase}.
@@ -684,48 +618,6 @@ public interface GramaticaSQLListener extends ParseTreeListener {
 	 */
 	void exitStmtCreateDB(@NotNull GramaticaSQLParser.StmtCreateDBContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code stmtCreateTable}
-	 * labeled alternative in {@link GramaticaSQLParser#statementTable}.
-	 * @param ctx the parse tree
-	 */
-	void enterStmtCreateTable(@NotNull GramaticaSQLParser.StmtCreateTableContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code stmtCreateTable}
-	 * labeled alternative in {@link GramaticaSQLParser#statementTable}.
-	 * @param ctx the parse tree
-	 */
-	void exitStmtCreateTable(@NotNull GramaticaSQLParser.StmtCreateTableContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link GramaticaSQLParser#insertColumns}.
-	 * @param ctx the parse tree
-	 */
-	void enterInsertColumns(@NotNull GramaticaSQLParser.InsertColumnsContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GramaticaSQLParser#insertColumns}.
-	 * @param ctx the parse tree
-	 */
-	void exitInsertColumns(@NotNull GramaticaSQLParser.InsertColumnsContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link GramaticaSQLParser#constraint}.
-	 * @param ctx the parse tree
-	 */
-	void enterConstraint(@NotNull GramaticaSQLParser.ConstraintContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GramaticaSQLParser#constraint}.
-	 * @param ctx the parse tree
-	 */
-	void exitConstraint(@NotNull GramaticaSQLParser.ConstraintContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link GramaticaSQLParser#atom}.
-	 * @param ctx the parse tree
-	 */
-	void enterAtom(@NotNull GramaticaSQLParser.AtomContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GramaticaSQLParser#atom}.
-	 * @param ctx the parse tree
-	 */
-	void exitAtom(@NotNull GramaticaSQLParser.AtomContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code stmtUseDB}
 	 * labeled alternative in {@link GramaticaSQLParser#statementDatabase}.
 	 * @param ctx the parse tree
@@ -737,16 +629,4 @@ public interface GramaticaSQLListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitStmtUseDB(@NotNull GramaticaSQLParser.StmtUseDBContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code RelIgual}
-	 * labeled alternative in {@link GramaticaSQLParser#opeRelacional}.
-	 * @param ctx the parse tree
-	 */
-	void enterRelIgual(@NotNull GramaticaSQLParser.RelIgualContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code RelIgual}
-	 * labeled alternative in {@link GramaticaSQLParser#opeRelacional}.
-	 * @param ctx the parse tree
-	 */
-	void exitRelIgual(@NotNull GramaticaSQLParser.RelIgualContext ctx);
 }

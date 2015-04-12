@@ -172,18 +172,6 @@ public class GramaticaSQLBaseListener implements GramaticaSQLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSetting(@NotNull GramaticaSQLParser.SettingContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitSetting(@NotNull GramaticaSQLParser.SettingContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterActTableAddCnst(@NotNull GramaticaSQLParser.ActTableAddCnstContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -268,18 +256,6 @@ public class GramaticaSQLBaseListener implements GramaticaSQLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRelMayor(@NotNull GramaticaSQLParser.RelMayorContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitRelMayor(@NotNull GramaticaSQLParser.RelMayorContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterUseDatabase(@NotNull GramaticaSQLParser.UseDatabaseContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -347,6 +323,18 @@ public class GramaticaSQLBaseListener implements GramaticaSQLListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitStmtShowColsFrom(@NotNull GramaticaSQLParser.StmtShowColsFromContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAtomID(@NotNull GramaticaSQLParser.AtomIDContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAtomID(@NotNull GramaticaSQLParser.AtomIDContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -424,18 +412,6 @@ public class GramaticaSQLBaseListener implements GramaticaSQLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRelMayorIgual(@NotNull GramaticaSQLParser.RelMayorIgualContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitRelMayorIgual(@NotNull GramaticaSQLParser.RelMayorIgualContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterCKeyCHK(@NotNull GramaticaSQLParser.CKeyCHKContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -455,18 +431,6 @@ public class GramaticaSQLBaseListener implements GramaticaSQLListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitCreateTable(@NotNull GramaticaSQLParser.CreateTableContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterRelacional(@NotNull GramaticaSQLParser.RelacionalContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitRelacional(@NotNull GramaticaSQLParser.RelacionalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -532,18 +496,6 @@ public class GramaticaSQLBaseListener implements GramaticaSQLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRelMenorIgual(@NotNull GramaticaSQLParser.RelMenorIgualContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitRelMenorIgual(@NotNull GramaticaSQLParser.RelMenorIgualContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterShowColumnsFrom(@NotNull GramaticaSQLParser.ShowColumnsFromContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -551,18 +503,6 @@ public class GramaticaSQLBaseListener implements GramaticaSQLListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitShowColumnsFrom(@NotNull GramaticaSQLParser.ShowColumnsFromContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterInsertConstraint(@NotNull GramaticaSQLParser.InsertConstraintContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInsertConstraint(@NotNull GramaticaSQLParser.InsertConstraintContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -688,18 +628,6 @@ public class GramaticaSQLBaseListener implements GramaticaSQLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRelMenor(@NotNull GramaticaSQLParser.RelMenorContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitRelMenor(@NotNull GramaticaSQLParser.RelMenorContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterCondicion(@NotNull GramaticaSQLParser.CondicionContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -724,13 +652,13 @@ public class GramaticaSQLBaseListener implements GramaticaSQLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRelDiferentes(@NotNull GramaticaSQLParser.RelDiferentesContext ctx) { }
+	@Override public void enterAtomExp(@NotNull GramaticaSQLParser.AtomExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitRelDiferentes(@NotNull GramaticaSQLParser.RelDiferentesContext ctx) { }
+	@Override public void exitAtomExp(@NotNull GramaticaSQLParser.AtomExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -748,54 +676,6 @@ public class GramaticaSQLBaseListener implements GramaticaSQLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStmtCreateTable(@NotNull GramaticaSQLParser.StmtCreateTableContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitStmtCreateTable(@NotNull GramaticaSQLParser.StmtCreateTableContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterInsertColumns(@NotNull GramaticaSQLParser.InsertColumnsContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInsertColumns(@NotNull GramaticaSQLParser.InsertColumnsContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterConstraint(@NotNull GramaticaSQLParser.ConstraintContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitConstraint(@NotNull GramaticaSQLParser.ConstraintContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterAtom(@NotNull GramaticaSQLParser.AtomContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitAtom(@NotNull GramaticaSQLParser.AtomContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterStmtUseDB(@NotNull GramaticaSQLParser.StmtUseDBContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -803,18 +683,6 @@ public class GramaticaSQLBaseListener implements GramaticaSQLListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitStmtUseDB(@NotNull GramaticaSQLParser.StmtUseDBContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterRelIgual(@NotNull GramaticaSQLParser.RelIgualContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitRelIgual(@NotNull GramaticaSQLParser.RelIgualContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

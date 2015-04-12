@@ -3,11 +3,12 @@ import java.util.ArrayList;
 
 public class DDL 
 {
+	//Variable para mostrar mensajes en la Interfaz Grafica.
 	public static String mensaje;
 	
 	public void createDatabase(String nombre)
 	{
-		File directorio = new File("C:/Users/Sophia/Documents/DBMS/Bases de Datos/" +nombre);
+		File directorio = new File("C:/Users/fred__000/git/DBMS1/Pruebas/" +nombre);
 		boolean success = directorio.mkdir();
 		if(success)
 			mensaje="Se ha creado la Base de Datos exitosamente";
@@ -17,7 +18,7 @@ public class DDL
 	
 	public void showDatabases()
 	{
-		File folder = new File("C:/Users/Sophia/Documents/DBMS/Bases de Datos");
+		File folder = new File("C:/Users/fred__000/git/DBMS1/Pruebas/");
 		File[] listOfDB = folder.listFiles();
 		String titulo="Bases de Datos actuales";
 		String datos="";
@@ -26,17 +27,15 @@ public class DDL
 		{
 			if (listOfDB[i].isDirectory())
 			{
-				//concatenar datos con datos, sino solo muestra el ultimo elemento de la lista
 				datos= datos +"\n- " + listOfDB[i].getName();
 			}
 		}
 		mensaje=titulo+datos;
 	}
 	
-	
 	public ArrayList<String> getNames()
 	{
-		File folder = new File("C:/Users/Sophia/Documents/DBMS/Bases de Datos");
+		File folder = new File("C:/Users/fred__000/git/DBMS1/Pruebas/");
 		File[] listOfFiles = folder.listFiles();
 		ArrayList<String> nameOfFiles = new ArrayList<String>();
 		for(int i = 0; i < listOfFiles.length; i++)
@@ -49,8 +48,8 @@ public class DDL
 	public void alterDatabase(String oldName, String newName)
 	{
 		ArrayList<String> names = getNames();
-		File oldDir = new File("C:/Users/Sophia/Documents/DBMS/Bases de Datos/" + oldName);
-		File newDir = new File("C:/Users/Sophia/Documents/DBMS/Bases de Datos/" + newName);
+		File oldDir = new File("C:/Users/fred__000/git/DBMS1/Pruebas/" + oldName);
+		File newDir = new File("C:/Users/fred__000/git/DBMS1/Pruebas/" + newName);
 		if(!names.contains(oldName))
 		{
 			mensaje="La Base de Datos que intenta renombrar no existe";
@@ -66,7 +65,6 @@ public class DDL
 		}  
 	}
 	
-
 	public String useDatabase(String nombre)
 	{
 		ArrayList<String> names = getNames();
@@ -78,7 +76,7 @@ public class DDL
 		}
 		else 
 		{
-			newDirectory = ("C:/Users/Sophia/Documents/DBMS/Bases de Datos/" + nombre + "/");
+			newDirectory = ("C:/Users/fred__000/git/DBMS1/Pruebas/" + nombre + "/");
 		}
 		mensaje=newDirectory;
 		return newDirectory;
@@ -115,7 +113,7 @@ public class DDL
 	
 	public void dropDatabase(String nombre)
 	{
-		File database = new File("C:/Users/Sophia/Documents/DBMS/Bases de Datos/" + nombre);
+		File database = new File("C:/Users/fred__000/git/DBMS1/Pruebas/" + nombre);
 		File[] archivos = database.listFiles();
 		for(int i = 0; i < archivos.length; i++)
 		{
@@ -128,5 +126,35 @@ public class DDL
 		mensaje="Se han borrado " + Integer.toString(archivos.length) + " exitosamente.\n Se ha eliminado la Base de Datos " + nombre + " exitosamente.";
 	}
 	
+	public void dropTable(String nombreDB, String nombreTable)
+	{
+		File database = new File("C:/Users/fred__000/git/DBMS1/Pruebas/" + nombreDB);
+		File[] archivos = database.listFiles();
+		for(int i=0; i<archivos.length; i++)
+		{
+			if(archivos[i].equals(nombreTable))
+			{
+				archivos[i].delete();
+			}
+		}
+		mensaje="Se ha eliminado correctamente la tabla "+nombreTabla;
+	}
+	
+	public void showTables(String nombreDB)
+	{
+		File folder = new File("C:/Users/fred__000/git/DBMS1/Pruebas/"+nombreDB);
+		File[] listOfDB = folder.listFiles();
+		String titulo="Tablas de "+nombreDB;
+		String datos="";
+		
+		for(int i = 0; i < listOfDB.length; i++)
+		{
+			if (listOfDB[i].isDirectory())
+			{
+				datos= datos +"\n- " + listOfDB[i].getName();
+			}
+		}
+		mensaje=titulo+datos;
+	}
 	
 }
