@@ -95,6 +95,12 @@ public interface GramaticaSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStatementData(@NotNull GramaticaSQLParser.StatementDataContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link GramaticaSQLParser#setting}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSetting(@NotNull GramaticaSQLParser.SettingContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code actTableAddCnst}
 	 * labeled alternative in {@link GramaticaSQLParser#actionTable}.
 	 * @param ctx the parse tree
@@ -142,6 +148,13 @@ public interface GramaticaSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStmtDropDB(@NotNull GramaticaSQLParser.StmtDropDBContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code RelMayor}
+	 * labeled alternative in {@link GramaticaSQLParser#opeRelacional}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRelMayor(@NotNull GramaticaSQLParser.RelMayorContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link GramaticaSQLParser#useDatabase}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -181,13 +194,6 @@ public interface GramaticaSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitStmtShowColsFrom(@NotNull GramaticaSQLParser.StmtShowColsFromContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code atomID}
-	 * labeled alternative in {@link GramaticaSQLParser#atom}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAtomID(@NotNull GramaticaSQLParser.AtomIDContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GramaticaSQLParser#createDatabase}.
 	 * @param ctx the parse tree
@@ -230,6 +236,13 @@ public interface GramaticaSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStmtAlterTable(@NotNull GramaticaSQLParser.StmtAlterTableContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code RelMayorIgual}
+	 * labeled alternative in {@link GramaticaSQLParser#opeRelacional}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRelMayorIgual(@NotNull GramaticaSQLParser.RelMayorIgualContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code cKeyCHK}
 	 * labeled alternative in {@link GramaticaSQLParser#cKey}.
 	 * @param ctx the parse tree
@@ -242,6 +255,12 @@ public interface GramaticaSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitCreateTable(@NotNull GramaticaSQLParser.CreateTableContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GramaticaSQLParser#relacional}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRelacional(@NotNull GramaticaSQLParser.RelacionalContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GramaticaSQLParser#insert}.
 	 * @param ctx the parse tree
@@ -274,11 +293,24 @@ public interface GramaticaSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPrincipal(@NotNull GramaticaSQLParser.PrincipalContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code RelMenorIgual}
+	 * labeled alternative in {@link GramaticaSQLParser#opeRelacional}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRelMenorIgual(@NotNull GramaticaSQLParser.RelMenorIgualContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link GramaticaSQLParser#showColumnsFrom}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitShowColumnsFrom(@NotNull GramaticaSQLParser.ShowColumnsFromContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GramaticaSQLParser#insertConstraint}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInsertConstraint(@NotNull GramaticaSQLParser.InsertConstraintContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code stmtActionTable}
 	 * labeled alternative in {@link GramaticaSQLParser#statementTable}.
@@ -286,6 +318,13 @@ public interface GramaticaSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitStmtActionTable(@NotNull GramaticaSQLParser.StmtActionTableContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code tipoIdText}
+	 * labeled alternative in {@link GramaticaSQLParser#tipoId}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTipoIdText(@NotNull GramaticaSQLParser.TipoIdTextContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GramaticaSQLParser#and}.
 	 * @param ctx the parse tree
@@ -344,6 +383,13 @@ public interface GramaticaSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBooleanExpression(@NotNull GramaticaSQLParser.BooleanExpressionContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code RelMenor}
+	 * labeled alternative in {@link GramaticaSQLParser#opeRelacional}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRelMenor(@NotNull GramaticaSQLParser.RelMenorContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link GramaticaSQLParser#condicion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -357,12 +403,12 @@ public interface GramaticaSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStmtPrincipalData(@NotNull GramaticaSQLParser.StmtPrincipalDataContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code atomExp}
-	 * labeled alternative in {@link GramaticaSQLParser#atom}.
+	 * Visit a parse tree produced by the {@code RelDiferentes}
+	 * labeled alternative in {@link GramaticaSQLParser#opeRelacional}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitAtomExp(@NotNull GramaticaSQLParser.AtomExpContext ctx);
+	T visitRelDiferentes(@NotNull GramaticaSQLParser.RelDiferentesContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code stmtCreateDB}
 	 * labeled alternative in {@link GramaticaSQLParser#statementDatabase}.
@@ -371,10 +417,42 @@ public interface GramaticaSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStmtCreateDB(@NotNull GramaticaSQLParser.StmtCreateDBContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code stmtCreateTable}
+	 * labeled alternative in {@link GramaticaSQLParser#statementTable}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitStmtCreateTable(@NotNull GramaticaSQLParser.StmtCreateTableContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GramaticaSQLParser#insertColumns}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInsertColumns(@NotNull GramaticaSQLParser.InsertColumnsContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GramaticaSQLParser#constraint}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitConstraint(@NotNull GramaticaSQLParser.ConstraintContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GramaticaSQLParser#atom}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAtom(@NotNull GramaticaSQLParser.AtomContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code stmtUseDB}
 	 * labeled alternative in {@link GramaticaSQLParser#statementDatabase}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitStmtUseDB(@NotNull GramaticaSQLParser.StmtUseDBContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code RelIgual}
+	 * labeled alternative in {@link GramaticaSQLParser#opeRelacional}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRelIgual(@NotNull GramaticaSQLParser.RelIgualContext ctx);
 }

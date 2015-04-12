@@ -43,6 +43,7 @@ ASC : 'asc' | 'ASC' | 'Asc' ;
 DESC : 'desc' | 'DESC' | 'Desc';
 NUM : Digit(Digit)* ;
 ID : Letter (Letter | Digit)* ;
+TEXT : Letter (Letter | Digit)* ;
 VALOR: Letter (Letter)* ;
 LOGICAL : Relational ;  
 
@@ -111,6 +112,7 @@ constraint
 
 tipoId
 :	INT										#tipoIdInt
+|	TEXT									#tipoIdText
 |	FLOAT									#tipoIdFloat
 |	DATE									#tipoIdDate
 |	CHAR '(' NUM ')'						#tipoIdChar
@@ -205,7 +207,7 @@ dropConstraint
 ;
 
 showTables
-:	SHOW TABLES ID
+:	SHOW TABLES
 ;
 
 dropTable

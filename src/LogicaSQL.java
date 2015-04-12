@@ -28,6 +28,14 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>
 	@Override
 	public String visitAlterTableRename(GramaticaSQLParser.AlterTableRenameContext ctx) 
 	{
+		if(dbActual == ""){
+			mensaje1 = "No se ha seleccionado una base de datos";
+		}
+		else{
+			String oldName = ctx.ID().getText();
+			String newName = ctx.renameTable().ID().getText();
+			ddl.alterTable(dbActual, oldName, newName);
+		}
 		// TODO Auto-generated method stub
 		return super.visitAlterTableRename(ctx);
 	}
@@ -91,11 +99,17 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>
 	}
 
 	@Override
-	public String visitShowTables(GramaticaSQLParser.ShowTablesContext ctx) 
-	{
+	public String visitShowTables(GramaticaSQLParser.ShowTablesContext ctx) {
+		if(dbActual == ""){
+			mensaje1 = "No se ha seleccionado una base de datos";
+		}
+		else{
+			ddl.showTables(dbActual);
+		}
 		// TODO Auto-generated method stub
 		return super.visitShowTables(ctx);
 	}
+	
 
 	@Override
 	public String visitStatementData(GramaticaSQLParser.StatementDataContext ctx) 
@@ -226,6 +240,9 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>
 	@Override
 	public String visitAlterTableAction(GramaticaSQLParser.AlterTableActionContext ctx)
 	{
+		if(dbActual == ""){
+			mensaje1 = "No se ha seleccionado una base de datos";
+		}
 		// TODO Auto-generated method stub
 		return super.visitAlterTableAction(ctx);
 	}
@@ -275,29 +292,34 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>
 	@Override
 	public String visitCreateTable(GramaticaSQLParser.CreateTableContext ctx) 
 	{
-		//nombre de la Tabla
-		String nombreTabla = ctx.ID().getText();
-		List<TerminalNode> ids = ctx.insertColumns().ID();
-		ArrayList<String> nombreCol = new ArrayList<>();
-		ArrayList<String> tipoCol = new ArrayList<>();
-		for(int i = 0; i < ids.size(); i++)
-		{
-			String nombre = ids.get(i).getText();
-			String tipo = visit(ctx.insertColumns().tipoId(i));
-			nombreCol.add(nombre);
-			tipoCol.add(tipo);
+		if(dbActual==""){
+			mensaje1 = "No se ha seleccionado una base de datos";
 		}
-		ArrayList<Column> cols = ddl.crearColumnas(nombreCol, tipoCol);
-		Table nuevaTabla = ddl.crearTabla(dbActual, nombreTabla, cols); //FALTA AGREGAR LAS CONSTRAINTS
-		System.out.println(nuevaTabla.toString());
-		try 
-		{
-			XMLfile.generate(dbActual, nombreTabla, nombreCol, tipoCol);
-		} 
-		catch (Exception e) 
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		else{
+			//nombre de la Tabla
+			String nombreTabla = ctx.ID().getText();
+			List<TerminalNode> ids = ctx.insertColumns().ID();
+			ArrayList<String> nombreCol = new ArrayList<>();
+			ArrayList<String> tipoCol = new ArrayList<>();
+			for(int i = 0; i < ids.size(); i++)
+			{
+				String nombre = ids.get(i).getText();
+				String tipo = visit(ctx.insertColumns().tipoId(i));
+				nombreCol.add(nombre);
+				tipoCol.add(tipo);
+			}
+			ArrayList<Column> cols = ddl.crearColumnas(nombreCol, tipoCol);
+			Table nuevaTabla = ddl.crearTabla(dbActual, nombreTabla, cols); //FALTA AGREGAR LAS CONSTRAINTS
+			System.out.println(nuevaTabla.toString());
+			try 
+			{
+				XMLfile.generate(dbActual, nombreTabla, nombreCol, tipoCol);
+			} 
+			catch (Exception e) 
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		// TODO Auto-generated method stub
 		return super.visitCreateTable(ctx);
@@ -355,6 +377,14 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>
 
 	@Override
 	public String visitShowColumnsFrom(GramaticaSQLParser.ShowColumnsFromContext ctx) {
+		if(dbActual ==""){
+			mensaje1 = "No se ha seleccionado una base de datos";
+		}
+		else{
+			String tabla = ctx.ID().getText();
+			ddl.showColumnsFrom(dbActual, tabla);
+			mensaje1 = DDL.mensaje;
+		}
 		// TODO Auto-generated method stub
 		return super.visitShowColumnsFrom(ctx);
 	}
@@ -391,6 +421,13 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>
 
 	@Override
 	public String visitDropTable(GramaticaSQLParser.DropTableContext ctx) {
+		if(dbActual ==""){
+			mensaje1 = "No se ha seleccionado una base de datos";
+		}
+		else{
+			String tabla = ctx.ID().getText();
+			ddl.dropTable(dbActual, tabla);
+		}
 		// TODO Auto-generated method stub
 		return super.visitDropTable(ctx);
 	}
@@ -411,6 +448,7 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>
 	@Override
 	public String visitShowDatabases(GramaticaSQLParser.ShowDatabasesContext ctx) 
 	{
+		dbActual = "";
 		ddl.showDatabases();
 		String tipo =super.visitShowDatabases(ctx);
 		// TODO Auto-generated method stub
@@ -460,13 +498,6 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>
 	}
 	
 	
-
-	@Override
-	public String visitStmtCreateTable(GramaticaSQLParser.StmtCreateTableContext ctx) {
-		// TODO Auto-generated method stub
-		return super.visitStmtCreateTable(ctx);
-	}
-
 	@Override
 	public String visitInsertColumns(GramaticaSQLParser.InsertColumnsContext ctx) {
 		// TODO Auto-generated method stub
@@ -496,6 +527,19 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>
 		// TODO Auto-generated method stub
 		return super.visitRelIgual(ctx);
 	}
+
+	@Override
+	public String visitTipoIdText(GramaticaSQLParser.TipoIdTextContext ctx) {
+		String tipo = "text";
+		return tipo;
+	}
+
+	@Override
+	public String visitStmtCreateTable(GramaticaSQLParser.StmtCreateTableContext ctx) {
+		// TODO Auto-generated method stub
+		return super.visitStmtCreateTable(ctx);
+	}
+
 	
 	
 }
