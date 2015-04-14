@@ -40,14 +40,14 @@ public class Table
 	@Override
 	public String toString() 
 	{
-		String cols = "";
-		String tipos = "";
+		String tempCols = "";
+		String mensaje = "Table [nombre= " + nombre;
 		for(int i = 0; i < columnas.size(); i++)
 		{
-			cols = cols + columnas.get(i).getNombre() + ", ";
-			tipos = tipos + columnas.get(i).getTipo() + ", ";
+			tempCols = ", columnas= " + columnas.get(i).getNombre() + ", " + columnas.get(i).getTipo();
+			mensaje += tempCols;
 		}
-		return "Table [nombre= " + nombre + ", columnas= " + cols + tipos +"]";
+		return mensaje  +"]";
 	}
 	
 	

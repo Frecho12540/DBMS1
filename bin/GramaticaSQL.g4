@@ -99,7 +99,7 @@ useDatabase
 ;
 
 createTable
-:	CREATE TABLE ID '(' (insertColumns constraint)?  ')' 
+:	CREATE TABLE ID '(' insertColumns constraint  ')' 
 ;
 
 insertColumns

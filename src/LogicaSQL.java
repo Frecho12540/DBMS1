@@ -232,7 +232,8 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>
 	public String visitCreateDatabase(GramaticaSQLParser.CreateDatabaseContext ctx) 
 	{
 		String id = ctx.ID().getText();
-		ddl.createDatabase(id);
+		Database database = ddl.createDatabase(id);
+		XMLfile.createDatabaseXML(database);
 		// TODO Auto-generated method stub
 		return super.visitCreateDatabase(ctx);
 	}
@@ -264,6 +265,15 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>
 	@Override
 	public String visitCKeyPK(GramaticaSQLParser.CKeyPKContext ctx) 
 	{
+		//Esto es el nombre de la constraint PK
+		String nombrePK = ctx.ID().getText();
+		List<TerminalNode> columnasPK = ctx.insertConstraint().ID();
+		ArrayList<String> idsPK = new ArrayList<>();
+		for(int i =0; i<columnasPK.size(); i++)
+		{
+			String id = columnasPK.get(i).getText();
+			idsPK.add(id);
+		}
 		// TODO Auto-generated method stub
 		return super.visitCKeyPK(ctx);
 	}
@@ -292,10 +302,6 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>
 	@Override
 	public String visitCreateTable(GramaticaSQLParser.CreateTableContext ctx) 
 	{
-		if(dbActual==""){
-			mensaje1 = "No se ha seleccionado una base de datos";
-		}
-		else{
 			//nombre de la Tabla
 			String nombreTabla = ctx.ID().getText();
 			List<TerminalNode> ids = ctx.insertColumns().ID();
@@ -308,19 +314,20 @@ public class LogicaSQL extends GramaticaSQLBaseVisitor<String>
 				nombreCol.add(nombre);
 				tipoCol.add(tipo);
 			}
-			ArrayList<Column> cols = ddl.crearColumnas(nombreCol, tipoCol);
-			Table nuevaTabla = ddl.crearTabla(dbActual, nombreTabla, cols); //FALTA AGREGAR LAS CONSTRAINTS
+			ArrayList<Column> columnas = ddl.crearColumnas(nombreCol, tipoCol);
+			Table nuevaTabla = ddl.crearTabla(dbActual, nombreTabla, columnas); //FALTA AGREGAR LAS CONSTRAINTS
 			System.out.println(nuevaTabla.toString());
 			try 
 			{
-				XMLfile.generate(dbActual, nombreTabla, nombreCol, tipoCol);
+				//XMLfile.generateMDTabla(dbActual, nombreTabla, nombreCol, tipoCol);
+				XMLfile.crearTablaMD(dbActual, "metadataTablas", nuevaTabla, nombreCol, tipoCol);
 			} 
 			catch (Exception e) 
 			{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+		
 		// TODO Auto-generated method stub
 		return super.visitCreateTable(ctx);
 	}

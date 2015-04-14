@@ -17,15 +17,32 @@ public class DDL
 {
 	//Variable para mostrar mensajes en la Interfaz Grafica.
 	public static String mensaje;
+	public static ArchivoXML XMLfile;
 	
-	public void createDatabase(String nombre)
+	public Database createDatabase(String nombre)
 	{
-		File directorio = new File("C:/Users/Sophia/Documents/DBMS/Bases de Datos/" +nombre);
-		boolean success = directorio.mkdir();
-		if(success)
-			mensaje="Se ha creado la Base de Datos exitosamente";
-		else
-			mensaje="Error al crear la Base de Datos";
+		boolean success = false;
+		Database database = new Database();
+		try{
+			File folder = new File("C:/Users/Sophia/Documents/DBMS/Bases de Datos");
+			File[] listOfDB = folder.listFiles();
+			ArrayList<String> bds = getNames();
+			if (!bds.contains(nombre)){
+				File directorio = new File("C:/Users/Sophia/Documents/DBMS/Bases de Datos/" +nombre);
+				success = directorio.mkdir();
+				
+				database.setNombre(nombre);
+				mensaje="Se ha creado la Base de Datos exitosamente";			
+			}
+			else{
+				mensaje="Error al crear la Base de Datos";
+			}			
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return database;
 	}
 	
 	public void showDatabases()
@@ -123,15 +140,21 @@ public class DDL
 		return columnas;
 	}
 	
+	//Este metodo solo crea el objeto Tabla, no lo está guardando en ningun xml ni almacenandolo en metadata
 	public Table crearTabla(String path, String nombre, ArrayList<Column> columnas) //FALTA ArrayList<Constraint> constraints
 	{
 		Table Tabla = new Table();
-		File archivo = new File(path +nombre);
-		if(!archivo.exists())
-		{
-			Tabla.setNombre(nombre);
-			Tabla.setColumnas(columnas);
-			//Tabla.setConstraints(constraints);
+		if(path == ""){
+			mensaje = "No se ha seleccionado una base de datos";
+		}
+		else{
+			File archivo = new File(path +nombre);
+			if(!archivo.exists())
+			{
+				Tabla.setNombre(nombre);
+				Tabla.setColumnas(columnas);
+				//Tabla.setConstraints(constraints);
+			}
 		}
 		return Tabla;	
 	}
